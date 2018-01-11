@@ -5,34 +5,50 @@ int Socket(int family, int type, int protocol)
     int n;
     if ((n = socket(family, type, protocol)) == -1)
         err_sys("socket error");
-    return (n);
+
+    return n;
 }
 
-void Listen(int fd, int backlog)
+int Accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen)
+{
+    int ret;
+    if ((ret = accept(sockfd, addr, addrlen)) == -1)
+            err_sys("accept error");
+
+    return ret;
+}
+
+void Listen(int sockfd, int backlog)
 {
     char *ptr;
 
     if ((ptr = getenv("listenq")) != NULL)
         backlog = atoi(ptr);
 
-    if (listen(fd, backlog) < 0)
+    if (listen(sockfd, backlog) < 0)
         err_sys("listen error");
 }
 
-int Bind(int fd, struct sockaddr *addr, socklen_t addrlen)
+void Connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
 {
-    int ret;
-    if ((ret = bind(fd, addr, addrlen)) == -1)
-        err_sys("bind error");
-
-    return ret;
+    if (connect(sockfd, addr, addrlen) == -1)
+        err_sys("connect error");
 }
 
-int Accept(int fd, struct sockaddr *addr, socklen_t *addrlen)
+void Bind(int sockfd, struct sockaddr *addr, socklen_t addrlen)
 {
-    int ret;
-    if ((ret = accept(fd, addr, addrlen)) == -1)
-        err_sys("accept error");
+    if (bind(sockfd, addr, addrlen) == -1)
+        err_sys("bind error");
+}
 
-    return ret;
+void Getsockname(int sockfd, struct sockaddr *localaddr, socklen_t *addrlen)
+{
+    if (getsockname(sockfd, localaddr, addrlen) == -1)
+        err_sys("getsockname error");
+}
+
+void Getpeername(int sockfd, struct sockaddr *peeraddr, socklen_t *addrlen)
+{
+    if (getpeername(sockfd, peeraddr, addrlen) == -1)
+        err_sys("getpeername error");
 }

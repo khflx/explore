@@ -8,7 +8,7 @@
 #include <string.h>
 #include <errno.h>
 
-#define MAXLINE 1024
+#include "../common.h"
 
 int daemon_proc;
 void err_ret(const char *fmt, ...);

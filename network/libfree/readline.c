@@ -16,10 +16,7 @@ again:
                 break;
         }
         else if (rc == 0)
-        {
-            *ptr = 0;
-            return n-1;
-        }
+            break;
         else
         {
             if (errno == EINTR)
@@ -27,4 +24,6 @@ again:
             return -1;
         }
     }
+    *ptr = '\0';
+    return n-1;
 }

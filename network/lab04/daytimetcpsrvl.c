@@ -1,5 +1,4 @@
 #include "../wrapper/Socket.h"
-#include <netinet/in.h>
 #include <time.h>
 #include <unistd.h>
 #include <arpa/inet.h>
