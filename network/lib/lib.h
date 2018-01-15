@@ -9,6 +9,9 @@
 #include "../wrapper/Stdio.h"
 #include "../wrapper/Writen.h"
 #include "../wrapper/Readline.h"
+#include "../wrapper/Select.h"
+#include "../wrapper/Unistd.h"
+#include "../wrapper/Socket.h"
 
 void str_echo(int sockfd);
 void str_cli(FILE *fp, int sockfd);

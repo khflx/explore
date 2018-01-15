@@ -17,13 +17,12 @@ int main(int argc, char **argv)
     servaddr.sin_port   = htons(SERV_PORT);
     Inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
     Connect(sockfd, (SA *) &servaddr, sizeof(servaddr));
-    socklen_t addrlen = sizeof(servaddr);
-    char str[INET_ADDRSTRLEN];
-    Getsockname(sockfd, (SA *) &servaddr, &addrlen);
-    printf("%s\n", Inet_ntop(AF_INET, &servaddr.sin_addr, str, INET_ADDRSTRLEN));
+//    socklen_t addrlen = sizeof(servaddr);
+//    char str[INET_ADDRSTRLEN];
+//    Getpeername(sockfd, (SA *) &servaddr, &addrlen);
+//    printf("%s\n%d\n", Inet_ntop(AF_INET, &servaddr.sin_addr, str, INET_ADDRSTRLEN), ntohs(servaddr.sin_port));
     str_cli(stdin, sockfd);
     exit(0);
-
 // 采用waitpid而不是wait的原因,
 // wait阻塞到获得一个子进程终止, 此时处于信号处理函数阶段,
 // 随操作系统实现可能会保留此时又一次的信号中断, 其他被忽略, 也就会产生zombie

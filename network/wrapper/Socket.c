@@ -52,3 +52,9 @@ void Getpeername(int sockfd, struct sockaddr *peeraddr, socklen_t *addrlen)
     if (getpeername(sockfd, peeraddr, addrlen) == -1)
         err_sys("getpeername error");
 }
+
+void Shutdown(int sockfd, int howto)
+{
+    if (shutdown(sockfd, howto) == -1)
+        err_sys("shutdown error");
+}

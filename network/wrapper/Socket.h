@@ -16,5 +16,5 @@ void Connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 void Bind(int sockfd, struct sockaddr *addr, socklen_t addrlen);
 void Getsockname(int sockfd, struct sockaddr *localaddr, socklen_t *addrlen);
 void Getpeername(int sockfd, struct sockaddr *peeraddr, socklen_t *addrlen);
-
+void Shutdown(int sockfd, int howto);
 #endif

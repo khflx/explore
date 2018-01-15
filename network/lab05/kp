@@ -1,0 +1,5 @@
+1. zombie子进程
+2. 信号中断slow system calls
+2. 套接字状态转换
+2. c/s软件需要怎样的网络架构(假设两端崩溃另一端的反应) 引出了select/poll、SO_KEEPALIVE想解决什么
+3. 网络传输二进制需要RPC中XDI(注: RFC1832)类似的数值交换标准

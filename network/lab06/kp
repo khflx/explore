@@ -1,0 +1,10 @@
+1. 五种I/O模型
+    1>  阻塞式I/O (blocking I/O)
+    2>  非阻塞式I/O (nonblocking I/O)
+    3>  I/O复用(I/O multiplexing)
+    4>  信号驱动式I/O(signal-driven I/O)
+    5>  异步I/O(POSIX的aio_系列函数)
+2. 全双工中交互式行为的浪费, 不调用stutdown时且客户端有批量数据时对客户端的输入比服务端的输出多
+3. IO复用模型中, 采取应用层缓冲区坑很多, 譬如
+    采用readline类似的函数, 面向文本行导致select阻塞后readline又会阻塞到直到有一行的数据
+    采用stdio缓冲区, 由于其不可见, 可能会缓冲多数据, 将会产生阻塞以及select无法针对于stdio而是unistd
