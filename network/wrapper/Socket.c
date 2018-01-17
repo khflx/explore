@@ -1,5 +1,14 @@
 #include "Socket.h"
 
+ssize_t Recvfrom(int sockfd, void *ptr, size_t nbytes, int flags, struct sockaddr *sa, socklen_t *salenptr)
+{
+    ssize_t     n;
+    if ((n = recvfrom(sockfd, ptr, nbytes, flags, sa, salenptr)) < 0)
+        err_sys("recvfrom error");
+
+    return n;
+}
+
 int Socket(int family, int type, int protocol)
 {
     int n;
@@ -39,6 +48,12 @@ void Bind(int sockfd, struct sockaddr *addr, socklen_t addrlen)
 {
     if (bind(sockfd, addr, addrlen) == -1)
         err_sys("bind error");
+}
+
+void Sendto(int sockfd, const void *ptr, size_t nbytes, int flags, const struct sockaddr *sa, socklen_t salen)
+{
+    if (sendto(sockfd, ptr, nbytes, flags, sa, salen) != (ssize_t) nbytes)
+        err_sys("sendto error");
 }
 
 void Getsockname(int sockfd, struct sockaddr *localaddr, socklen_t *addrlen)

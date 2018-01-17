@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "../unit/error.h"
 
+/* 返回NULL表示到达EOF */
 char    *Fgets(char *s, int size, FILE *stream);
 int     Fputs(const char *s, FILE *stream);
 

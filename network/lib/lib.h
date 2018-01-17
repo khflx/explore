@@ -13,6 +13,9 @@
 #include "../wrapper/Unistd.h"
 #include "../wrapper/Socket.h"
 
+void dg_echo(int sockfd, SA *pcliaddr, socklen_t clilen);
+void dg_cli(FILE *fp, int sockfd, const SA *pservaddr, socklen_t servlen);
+
 void str_echo(int sockfd);
 void str_cli(FILE *fp, int sockfd);
 

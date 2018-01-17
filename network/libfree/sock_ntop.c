@@ -9,7 +9,7 @@ char *sock_ntop(const struct sockaddr *sa, socklen_t salen)
     case AF_INET:
     {
         struct sockaddr_in *sin = (struct sockaddr_in *) sa;
-        if (inet_ntop(AF_INET, &sin->sin_addr, str, sizeof(str) == NULL))
+        if (inet_ntop(AF_INET, &sin->sin_addr, str, sizeof(str)) == NULL)
             return NULL;
         if (ntohs(sin->sin_port) != 0)
         {
