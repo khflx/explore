@@ -61,11 +61,21 @@ void Getsockname(int sockfd, struct sockaddr *localaddr, socklen_t *addrlen)
     if (getsockname(sockfd, localaddr, addrlen) == -1)
         err_sys("getsockname error");
 }
-
 void Getpeername(int sockfd, struct sockaddr *peeraddr, socklen_t *addrlen)
 {
     if (getpeername(sockfd, peeraddr, addrlen) == -1)
         err_sys("getpeername error");
+}
+
+void Getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optlen)
+{
+    if (getsockopt(sockfd, level, optname, optval, optlen) == -1)
+        err_sys("getsockopt error");
+}
+void Setsockopt(int sockfd, int level, int optname, const void * optval, socklen_t optlen)
+{
+    if (setsockopt(sockfd, level, optname, optval, optlen) == -1)
+        err_sys("setsockopt error");
 }
 
 void Shutdown(int sockfd, int howto)

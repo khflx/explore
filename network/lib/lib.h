@@ -2,7 +2,9 @@
 #define EXPLORE_NETWORK_LIB_H
 
 #include <sys/types.h>
+#include <syslog.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include "../common.h"
 #include "../unit/error.h"
 #include "../libfree/libfree.h"
@@ -22,4 +24,6 @@ void str_cli(FILE *fp, int sockfd);
 void sig_chld(int signo);
 void sig_pipe(int signo);
 
+int daemon_init(const char *pname, int facility);
+void daemon_inetd(const char *pname, int facility);
 #endif
